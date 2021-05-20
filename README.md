@@ -5,7 +5,7 @@
 [![Go Report Card][5]][6]
 [![FOSSA Status][9]][10]
 
-[1]: https://github.com/cameronnewman/go-pagination/workflows/pipeline/badge.svg
+[1]: https://github.com/cameronnewman/go-pagination/actions/workflows/pipeline.yml/badge.svg
 [2]: https://github.com/cameronnewman/go-pagination/actions
 [3]: https://godoc.org/github.com/cameronnewman/go-pagination?status.svg
 [4]: https://godoc.org/github.com/cameronnewman/go-pagination
