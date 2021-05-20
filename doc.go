@@ -12,6 +12,6 @@ package pagination
 //	}
 //
 //	token := page.Encode()
-//	
+//
 //	fmt.Println(token)
 //
