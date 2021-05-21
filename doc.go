@@ -6,9 +6,9 @@ package pagination
 // Simple example:
 //
 //	page := Page{
-//		ID: "8fed1b32-3059-4f89-96ec-3af15b3d2bc8",
-//		OpenedAtUTC: 1621480176,
-//		Size: 1,
+//		OffsetID: "8fed1b32-3059-4f89-96ec-3af15b3d2bc8",
+//		OffsetTimeAtUTC: 1621480176,
+//		PageSize: 1,
 //	}
 //
 //	token := page.Encode()

@@ -23,11 +23,11 @@ func TestToken_Decode(t *testing.T) {
 		},
 		{
 			name: "Pass/UUID",
-			tr:   "eyJpZCI6IjhmZWQxYjMyLTMwNTktNGY4OS05NmVjLTNhZjE1YjNkMmJjOCIsIm9wZW5fYXRfdXRjIjoxNjIxNDgwMTc2LCJzaXplIjoxfQ==",
+			tr:   "eyJvZmZzZXRfaWQiOiI4ZmVkMWIzMi0zMDU5LTRmODktOTZlYy0zYWYxNWIzZDJiYzgiLCJvZmZzZXRfdGltZV9hdF91dGMiOjE2MjE0ODAxNzYsInBhZ2Vfc2l6ZSI6MX0=",
 			want: Page{
-				OpenedAtUTC: 1621480176,
-				ID:          "8fed1b32-3059-4f89-96ec-3af15b3d2bc8",
-				Size:        1,
+				OffsetID:        "8fed1b32-3059-4f89-96ec-3af15b3d2bc8",
+				OffsetTimeAtUTC: 1621480176,
+				PageSize:        1,
 			},
 		},
 	}
@@ -42,9 +42,9 @@ func TestToken_Decode(t *testing.T) {
 
 func TestPage_Encode(t *testing.T) {
 	type fields struct {
-		OpenedAtUTC int64
-		ID          string
-		Size        int64
+		OffsetID        string
+		OffsetTimeAtUTC int64
+		PageSize        int64
 	}
 	tests := []struct {
 		name   string
@@ -54,37 +54,37 @@ func TestPage_Encode(t *testing.T) {
 		{
 			name: "Pass/Empty",
 			fields: fields{
-				OpenedAtUTC: 0,
-				ID:          "",
-				Size:        0,
+				OffsetID:        "",
+				OffsetTimeAtUTC: 0,
+				PageSize:        0,
 			},
-			want: "eyJpZCI6IiIsIm9wZW5fYXRfdXRjIjowLCJzaXplIjowfQ==",
+			want: "eyJvZmZzZXRfaWQiOiIiLCJvZmZzZXRfdGltZV9hdF91dGMiOjAsInBhZ2Vfc2l6ZSI6MH0=",
 		},
 		{
 			name: "Pass/UUID",
 			fields: fields{
-				OpenedAtUTC: 1621480176,
-				ID:          "8fed1b32-3059-4f89-96ec-3af15b3d2bc8",
-				Size:        1,
+				OffsetID:        "8fed1b32-3059-4f89-96ec-3af15b3d2bc8",
+				OffsetTimeAtUTC: 1621480176,
+				PageSize:        1,
 			},
-			want: "eyJpZCI6IjhmZWQxYjMyLTMwNTktNGY4OS05NmVjLTNhZjE1YjNkMmJjOCIsIm9wZW5fYXRfdXRjIjoxNjIxNDgwMTc2LCJzaXplIjoxfQ==",
+			want: "eyJvZmZzZXRfaWQiOiI4ZmVkMWIzMi0zMDU5LTRmODktOTZlYy0zYWYxNWIzZDJiYzgiLCJvZmZzZXRfdGltZV9hdF91dGMiOjE2MjE0ODAxNzYsInBhZ2Vfc2l6ZSI6MX0=",
 		},
 		{
 			name: "Pass/Email",
 			fields: fields{
-				OpenedAtUTC: 1621480176,
-				ID:          "larry@google.com",
-				Size:        1203948203498029384,
+				OffsetID:        "larry@google.com",
+				OffsetTimeAtUTC: 1621480176,
+				PageSize:        1203948203498029384,
 			},
-			want: "eyJpZCI6ImxhcnJ5QGdvb2dsZS5jb20iLCJvcGVuX2F0X3V0YyI6MTYyMTQ4MDE3Niwic2l6ZSI6MTIwMzk0ODIwMzQ5ODAyOTM4NH0=",
+			want: "eyJvZmZzZXRfaWQiOiJsYXJyeUBnb29nbGUuY29tIiwib2Zmc2V0X3RpbWVfYXRfdXRjIjoxNjIxNDgwMTc2LCJwYWdlX3NpemUiOjEyMDM5NDgyMDM0OTgwMjkzODR9",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			p := &Page{
-				OpenedAtUTC: tt.fields.OpenedAtUTC,
-				ID:          tt.fields.ID,
-				Size:        tt.fields.Size,
+				OffsetID:        tt.fields.OffsetID,
+				OffsetTimeAtUTC: tt.fields.OffsetTimeAtUTC,
+				PageSize:        tt.fields.PageSize,
 			}
 			if got := p.Encode(); got != tt.want {
 				t.Errorf("Page.Encode() = %v, want %v", got, tt.want)

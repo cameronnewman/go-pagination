@@ -30,9 +30,9 @@ func (t Token) Decode() Page {
 
 // Page represents the next page for the query
 type Page struct {
-	ID          string `json:"id"`
-	OpenedAtUTC int64  `json:"open_at_utc"`
-	Size        int64  `json:"size"`
+	OffsetID        string `json:"offset_id"`
+	OffsetTimeAtUTC int64  `json:"offset_time_at_utc"`
+	PageSize        int64  `json:"page_size"`
 }
 
 // Encode returns the Token type for a page
